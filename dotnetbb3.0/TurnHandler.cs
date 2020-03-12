@@ -10,32 +10,33 @@ namespace dotnetbb3._0
         public static int HomeTurns;
         public static int AwayTurns;
         public static List<string> AvailableActions;
+        public static string ActiveTeam;
 
         public static List<Player> HomeTeam = new List<Player> {
-            new Player("Bob Skifford1", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Home"),
-            new Player("Bob Skifford2", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Home"),
-            new Player("Bob Skifford3", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Home"),
-            new Player("Bob Skifford4", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Home"),
-            new Player("Bob Skifford5", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Home"),
-            new Player("Bob Skifford6", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Home"),
-            new Player("Bob Skifford7", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Home"),
-            new Player("Bob Skifford8", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Home"),
-            new Player("Bob Skifford9", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Home"),
-            new Player("Bob Skifford10", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Home"),
-            new Player("Bob Skifford11", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Home"),
+            new Player("Bob Skifford1", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Home"),
+            new Player("Bob Skifford2", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Home"),
+            new Player("Bob Skifford3", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Home"),
+            new Player("Bob Skifford4", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Home"),
+            new Player("Bob Skifford5", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Home"),
+            new Player("Bob Skifford6", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Home"),
+            new Player("Bob Skifford7", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Home"),
+            new Player("Bob Skifford8", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Home"),
+            new Player("Bob Skifford9", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Home"),
+            new Player("Bob Skifford10", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Home"),
+            new Player("Bob Skifford11", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Home"),
         };
         public static List<Player> AwayTeam = new List<Player> {
-            new Player("McMurty1", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Away"),
-            new Player("McMurty2", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Away"),
-            new Player("McMurty3", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Away"),
-            new Player("McMurty4", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Away"),
-            new Player("McMurty5", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Away"),
-            new Player("McMurty6", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Away"),
-            new Player("McMurty7", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Away"),
-            new Player("McMurty8", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Away"),
-            new Player("McMurty9", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Away"),
-            new Player("McMurty10", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Away"),
-            new Player("McMurty11", "L", new int[] { 6, 3, 3, 8 }, new string[] {"Block", "Pass", "Sure Hands" }, "Away"),
+            new Player("McMurty1", "L", new int[] { 996, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Away"),
+            new Player("McMurty2", "L", new int[] { 996, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Away"),
+            new Player("McMurty3", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Away"),
+            new Player("McMurty4", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Away"),
+            new Player("McMurty5", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Away"),
+            new Player("McMurty6", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Away"),
+            new Player("McMurty7", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Away"),
+            new Player("McMurty8", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Away"),
+            new Player("McMurty9", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Away"),
+            new Player("McMurty10", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Away"),
+            new Player("McMurty11", "L", new int[] { 6, 3, 3, 8 }, new List<string> {"Block", "Pass", "Sure Hands" }, "Away"),
         };
 
         public static List<Player> HomeReserves = new List<Player>();
@@ -58,10 +59,17 @@ namespace dotnetbb3._0
             AwayTeam.CopyTo(temp);
             AwayReserves = temp.ToList();
             SetupTeam("Away");
+            SetupTeam("Home");
+            StartTurn("Away");
 
         }
-        public static void StartTurn(string team)
+        public static void TurnOver()
         {
+            EndTurn(ActiveTeam);
+        }
+        public static void StartTurn(string team) //Unfinished
+        {
+            ActiveTeam = team;
             AvailableActions = new List<string> { "Move","Block","Blitz","Pass","Handover"};
             while (true)
             {
@@ -72,15 +80,16 @@ namespace dotnetbb3._0
                 switch (SelectedChoice)
                 {
                     case "Move":
-                        
+                        SelectedPlayer.Move();
                         break;
                 }
             }
         }
 
-        public static void EndTurn(string team, List<Player> Exceptions)
+        public static void EndTurn(string team, List<Player> Exceptions=null)
         {
             List<Player> ActiveOnField;
+            Exceptions = Exceptions ?? new List<Player>();
             if (team == "Home")
             {
                 ActiveOnField = HomeOnField;
@@ -165,7 +174,7 @@ namespace dotnetbb3._0
                             Console.ReadKey();
                             break;
                         }
-                        else if (onLoS < 3)
+                        else if (onLoS < 0) //Fix count, debug rn
                         {
                             Console.WriteLine("You must have at least 3 players on the line of scrimage");
                             Console.WriteLine("(You currently have: {0} players on the line of scrimage)", onLoS);
@@ -178,7 +187,7 @@ namespace dotnetbb3._0
                             Console.ReadKey();
                             break;
                         }
-                        else if (ActiveOnField.Count < 2) //Fix playercount, debug rn
+                        else if (ActiveOnField.Count < 0) //Fix playercount, debug rn
                         {
                             Console.WriteLine("You must place as many players as you can on the field (up to 11 players)");
                             Console.ReadKey();

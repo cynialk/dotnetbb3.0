@@ -4,19 +4,20 @@ using System.Text;
 
 namespace dotnetbb3._0
 {
-    public class Player
+    class Player
     {
         public string DisplayName { get; set; }
         public int[] Stats { get; set; }
         public string PlayerName { get; set; }
-        public string[] Skills { get; set; }
+        public List<string> Skills { get; set; }
         public string Team { get; set; }
         public int[] Position { get; set; }
         public bool Stunned { get; set; }
         public bool Proned { get; set; }
         public bool Used { get; set; }
+        bool inTackleZone;
 
-        public Player(string InputName, string InputDisplayName, int[] InputStats, string[] InputSkills, string InputTeam)
+        public Player(string InputName, string InputDisplayName, int[] InputStats, List<string> InputSkills, string InputTeam)
         {
             PlayerName = InputName;
             DisplayName = InputDisplayName;
@@ -32,18 +33,66 @@ namespace dotnetbb3._0
             Console.WriteLine("Skills: " + String.Join(", ", Skills));
             Console.WriteLine("Coordinates: x: {0}, y: {1}",Position[0],Position[1]);
         }
-        public void Move()
+        public void Move() //Unfinished
         {
-            for (int Steps = 0; Steps <= Stats[0]+2; Steps++)
+            for (int Steps = 0; Steps < Stats[0]+2; Steps++)
             {
-                RenderHandler.RenderPitch();
-                Cursor.Position = new int[] { Position[0], Position[1] };
+                if (PitchHandler.Pitch[Position[0],Position[1]].GetTackleZones(Team) > 0)
+                {
+                    Console.WriteLine("Need to dodge");
+                    inTackleZone = true;
+                }
+                else
+                {
+                    inTackleZone = false;
+                }
                 Console.WriteLine("Movement left: " + (Stats[0]-Steps));
+                Console.WriteLine("Press Enter to end action");
                 ConsoleKey input = Console.ReadKey().Key;
+                if (input == ConsoleKey.Enter)
+                {
+                    return;
+                }
                 int[] movement = InputHandler.Move8(input);
+                if (PitchHandler.Pitch[Position[0]+movement[0],Position[1]+movement[1]].StoredPlayer == null)
+                {
+                    MovePlayerToTileAtPosition(new int[] { Position[0] + movement[0], Position[1] + movement[1] });
+                    Cursor.Position = new int[] { Position[0], Position[1] };
+                    if (inTackleZone && !DodgeRoll(PitchHandler.Pitch[Position[0], Position[1]].GetTackleZones(Team)))
+                    {
+                        Proned = true;
+                        TurnHandler.TurnOver();
+                    }
+                    RenderHandler.RenderPitch();
+                }
+                else
+                {
+                    Steps--;
+                    continue;
+                }
             }
         }
-
+        public bool DodgeRoll(int TackleZones)
+        {
+            bool success = AgRoll(1 - TackleZones);
+            Console.WriteLine("Success: {0}, Tacklezones: {1}, Agility: {2}, Needed: {3}", success, TackleZones, Stats[2], 7 - Stats[2] - (1 - TackleZones));
+            Console.ReadKey();
+            return success;
+        }
+        public bool AgRoll(int modifiers)
+        {
+            int roll = InputHandler.Roll1d6();
+            if (roll == 6) return true;
+            else if (roll == 1) return false;
+            else if ((roll + modifiers) > 6 - Stats[2]) return true;
+            else return false;
+        }
+        public void MovePlayerToTileAtPosition(int[] NewPosition)
+        {
+            PitchHandler.Pitch[Position[0], Position[1]].StoredPlayer = null;
+            PitchHandler.Pitch[NewPosition[0], NewPosition[1]].StoredPlayer = this;
+            Position = new int[] { NewPosition[0], NewPosition[1] };
+        }
         public void Stun()
         {
             Stunned = true;

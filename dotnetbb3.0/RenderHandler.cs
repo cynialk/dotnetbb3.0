@@ -24,9 +24,39 @@ namespace dotnetbb3._0
                     }
                     if (Pitch[x,y].StoredPlayer != null)
                     {
-                        if (Pitch[x, y].StoredPlayer.Team == "Home") Console.ForegroundColor = ConsoleColor.Blue;
-                        else Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(Pitch[x, y].StoredPlayer.DisplayName);
+                        if (Pitch[x, y].StoredPlayer.Team == "Home")
+                        {
+                            if (!Pitch[x, y].StoredPlayer.Proned)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Blue;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                            }
+                            
+                        }
+                        else
+                        {
+                            if (!Pitch[x, y].StoredPlayer.Proned)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                            }
+
+                        }
+
+                        if (!Pitch[x, y].StoredPlayer.Stunned)
+                        {
+                            Console.Write(Pitch[x, y].StoredPlayer.DisplayName);
+                        }
+                        else
+                        {
+                            Console.Write("*");
+                        }
                         Console.ForegroundColor = ConsoleColor.Gray;
                     }
                     else if (x == 13 || x == 12)

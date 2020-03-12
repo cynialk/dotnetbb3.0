@@ -6,7 +6,7 @@ namespace dotnetbb3._0
 {
     static class InputHandler
     {
-
+        public static Random random = new Random();
         public static int[] Move8(ConsoleKey input)
         {
             int[] moveto = { 0, 0 };
@@ -91,6 +91,14 @@ namespace dotnetbb3._0
                     return choices[CursorPosition];
                 }
             }
+        }
+
+        public static int Roll1d6()
+        {
+            int rolled = random.Next(1, 6);
+            Console.WriteLine("Rolled: " + rolled);
+            Console.ReadKey();
+            return rolled;
         }
 
         public static int Move2(ConsoleKey input)

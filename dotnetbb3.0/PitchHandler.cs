@@ -18,6 +18,10 @@ namespace dotnetbb3._0
                     Pitch[x, y] = new Tile(pos);
                 }
             }
+            foreach (Tile tile in Pitch)
+            {
+                tile.FindNeighbours();
+            }
         }
     }
 }
