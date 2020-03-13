@@ -30,6 +30,7 @@ namespace dotnetbb3._0
                         continue;
                     }
                     return InputHandler.ChoiceMenu(TurnHandler.AvailableActions);
+
                 }
                 if (onTeam == null)
                 {

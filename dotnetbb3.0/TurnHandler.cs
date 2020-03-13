@@ -43,6 +43,10 @@ namespace dotnetbb3._0
         public static List<Player> AwayReserves = new List<Player>();
         public static List<Player> HomeOnField = new List<Player>();
         public static List<Player> AwayOnField = new List<Player>();
+        public static List<Player> HomeKO = new List<Player>();
+        public static List<Player> AwayKO = new List<Player>();
+        public static List<Player> HomeInjured = new List<Player>();
+        public static List<Player> AwayInjured = new List<Player>();
 
 
         public static  void initMatch()
@@ -133,7 +137,7 @@ namespace dotnetbb3._0
                 ActiveReserves = AwayReserves;
                 Cursor.Position = new int[] { 13, 0 };
             }
-            AvailableActions = new List<string> { "Return the Player on this tile to the reserves", "Open the reserves", "Move Player", "End Setup"};
+            AvailableActions = new List<string> { "Open the reserves", "Move Player", "Return the Player on this tile to the reserves", "End Setup" };
             while (true)
             {
                 RenderHandler.RenderPitch();

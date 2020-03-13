@@ -51,17 +51,20 @@ namespace dotnetbb3._0
                 ConsoleKey input = Console.ReadKey().Key;
                 if (input == ConsoleKey.Enter)
                 {
+                    Used = true;
                     return;
                 }
                 int[] movement = InputHandler.Move8(input);
-                if (PitchHandler.Pitch[Position[0]+movement[0],Position[1]+movement[1]].StoredPlayer == null)
+                int[] newPos = new int[] { Position[0] + movement[0], Position[1] + movement[1] };
+                if ( newPos[0] >= 0 && newPos[1] >= 0 && newPos[0] < PitchHandler.Pitch.GetLength(0) && newPos[1] < PitchHandler.Pitch.GetLength(1) && PitchHandler.Pitch[newPos[0],newPos[1]].StoredPlayer == null)
                 {
-                    MovePlayerToTileAtPosition(new int[] { Position[0] + movement[0], Position[1] + movement[1] });
+                    MovePlayerToTileAtPosition(new int[] { newPos[0], newPos[1] });
                     Cursor.Position = new int[] { Position[0], Position[1] };
                     if (inTackleZone && !DodgeRoll(PitchHandler.Pitch[Position[0], Position[1]].GetTackleZones(Team)))
                     {
                         Proned = true;
                         TurnHandler.TurnOver();
+                        return;
                     }
                     RenderHandler.RenderPitch();
                 }
@@ -71,6 +74,7 @@ namespace dotnetbb3._0
                     continue;
                 }
             }
+            Used = true;
         }
         public bool DodgeRoll(int TackleZones)
         {
@@ -97,6 +101,50 @@ namespace dotnetbb3._0
         {
             Stunned = true;
             Used = true;
+        }
+        public void KO()
+        {
+            Stunned = false;
+            Used = false;
+            if (Team == "Home")
+            {
+                TurnHandler.HomeTeam.Remove(this);
+                TurnHandler.HomeKO.Add(this);
+            }
+            else
+            {
+                TurnHandler.AwayTeam.Remove(this);
+                TurnHandler.AwayKO.Add(this);
+            }
+        }
+        public void Injury()
+        {
+            if (Team == "Home")
+            {
+                TurnHandler.HomeTeam.Remove(this);
+                TurnHandler.HomeInjured.Add(this);
+            }
+            else
+            {
+                TurnHandler.AwayTeam.Remove(this);
+                TurnHandler.AwayInjured.Add(this);
+            }
+        }
+        public void ArmorRoll()
+        {
+            int Rolled = InputHandler.Roll1d6() + InputHandler.Roll1d6();
+            if (Rolled < 8)
+            {
+                Stun();
+            }
+            else if (Rolled < 10)
+            {
+                KO();
+            }
+            else if (Rolled < 13)
+            {
+                Injury();
+            }
         }
     }
 }
