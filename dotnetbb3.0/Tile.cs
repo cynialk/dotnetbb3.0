@@ -33,7 +33,34 @@ namespace dotnetbb3._0
                 }
             }
         }
-
+        public int GetAssists(string team)
+        {
+            int assists = 0;
+            foreach (Tile NeighbouringTile in Neighbours)
+            {
+                if (NeighbouringTile.StoredPlayer == null)
+                {
+                    continue;
+                }
+                else if (NeighbouringTile.StoredPlayer.Team != StoredPlayer.Team)
+                {
+                    if (NeighbouringTile.GetTackleZones(team) < 2) assists--;
+                }
+                else
+                {
+                    if ( team == "Home")
+                    {
+                        if (NeighbouringTile.GetTackleZones("Home") < 2) assists++;
+                    }
+                    else
+                    {
+                        if (NeighbouringTile.GetTackleZones("Away") < 2) assists++;
+                    }
+                    
+                }
+            }
+            return assists;
+        }
         public int GetTackleZones(string team)
         {
             int amount = 0;
